@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ayudemos a Danna a llegar al CIMAT</title>
+  <meta name="description" content="Recolecta solidaria para cubrir los vuelos de Danna Sánchez a la Escuela de Verano CIMAT Mérida, México." />
+  <meta property="og:title" content="Ayudemos a Danna a llegar al CIMAT" />
+  <meta property="og:description" content="Estamos reuniendo $1.400.000 COP para sus vuelos. La escuela apoya el resto." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#f8edcf" />
+
+  <!--
+    Página lista para GitHub Pages.
+    Para actualizar la recolecta, cambia los valores del objeto CONFIG al final del archivo.
+    Si tienes un QR real, reemplaza el bloque .qr-placeholder por:
+    <img class="qr-img" src="assets/qr.png" alt="QR para aportar" />
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #fff4d8;
+      --paper-2: #fff9e9;
+      --ink: #1f2428;
+      --muted: #6f6151;
+      --red: #e95743;
+      --blue: #176fb8;
+      --yellow: #f4bc37;
+      --black: #202124;
+      --green: #2a8a66;
+      --line: rgba(31, 36, 40, .16);
+      --shadow: 0 22px 60px rgba(67, 48, 23, .14);
+      --max: 1120px;
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Nunito, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 7% 12%, rgba(244,188,55,.22), transparent 26rem),
+        radial-gradient(circle at 88% 16%, rgba(23,111,184,.16), transparent 24rem),
+        radial-gradient(circle at 50% 90%, rgba(233,87,67,.12), transparent 34rem),
+        var(--paper);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .22;
+      background-image:
+        radial-gradient(rgba(255,255,255,.9) 1px, transparent 1px),
+        radial-gradient(rgba(31,36,40,.08) .7px, transparent .7px);
+      background-size: 26px 26px, 19px 19px;
+      mix-blend-mode: multiply;
+    }
+
+    a { color: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 34px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      z-index: 10;
+      top: 14px;
+      width: min(var(--max), calc(100% - 28px));
+      margin: 14px auto 0;
+      padding: 10px 12px 10px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      border: 3px solid var(--black);
+      border-radius: 999px;
+      background: rgba(255,249,233,.84);
+      box-shadow: 5px 6px 0 rgba(31,36,40,.08);
+      backdrop-filter: blur(12px);
+      transform: rotate(-.25deg);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: -.02em;
+    }
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 3px solid var(--black);
+      border-radius: 50% 45% 55% 48%;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: "Patrick Hand", cursive;
+      font-size: 24px;
+      line-height: 1;
+      box-shadow: 3px 4px 0 var(--red);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav a {
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 9px 13px;
+      border-radius: 999px;
+    }
+    .nav a:hover { background: rgba(233,87,67,.12); }
+    .nav .pill {
+      color: #fff;
+      background: var(--red);
+      border: 2px solid var(--black);
+      box-shadow: 3px 4px 0 rgba(31,36,40,.18);
+    }
+
+    .hero {
+      position: relative;
+      padding: 76px 0 48px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.06fr) minmax(310px, .94fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 15px;
+      color: var(--blue);
+      background: rgba(255,249,233,.72);
+      border: 3px solid var(--blue);
+      border-radius: 999px 777px 999px 777px;
+      font-family: "Patrick Hand", cursive;
+      font-size: 22px;
+      line-height: 1;
+      transform: rotate(-2deg);
+      box-shadow: 4px 5px 0 rgba(23,111,184,.13);
+    }
+    .hand-badge::before { content: "★"; color: var(--yellow); -webkit-text-stroke: 1px var(--blue); }
+
+    h1 {
+      margin: 20px 0 18px;
+      max-width: 760px;
+      font-family: "Patrick Hand", cursive;
+      font-size: clamp(56px, 9vw, 116px);
+      line-height: .8;
+      font-weight: 400;
+      letter-spacing: -.04em;
+      color: var(--red);
+      text-transform: uppercase;
+      text-shadow: 3px 4px 0 rgba(31,36,40,.05);
+    }
+    .black-script {
+      color: var(--black);
+      display: inline-block;
+      transform: rotate(-1deg);
+    }
+    .lead {
+      max-width: 700px;
+      margin: 0;
+      font-size: clamp(18px, 2vw, 23px);
+      color: #4f463c;
+    }
+    .lead strong { color: var(--ink); }
+    .hero-actions {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 20px;
+      border: 3px solid var(--black);
+      border-radius: 999px 820px 999px 777px;
+      font-weight: 900;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 5px 6px 0 rgba(31,36,40,.2);
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .button:hover { transform: translateY(-2px) rotate(-.35deg); box-shadow: 7px 8px 0 rgba(31,36,40,.18); }
+    .button-primary { background: var(--red); color: #fff; }
+    .button-secondary { background: var(--paper-2); color: var(--black); }
+    .button-blue { background: var(--blue); color: #fff; }
+    .button-small { min-height: 42px; padding-inline: 14px; font-size: 14px; }
+
+    .poster-card {
+      position: relative;
+      padding: 22px;
+      border: 4px solid var(--black);
+      border-radius: 34px 42px 30px 46px;
+      background: rgba(255,249,233,.86);
+      box-shadow: 12px 14px 0 rgba(31,36,40,.10), var(--shadow);
+      transform: rotate(1.2deg);
+      overflow: hidden;
+    }
+    .poster-card::before,
+    .poster-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .poster-card::before {
+      width: 190px;
+      height: 190px;
+      top: -80px;
+      right: -70px;
+      border: 12px solid rgba(233,87,67,.28);
+    }
+    .poster-card::after {
+      width: 210px;
+      height: 210px;
+      bottom: -110px;
+      left: -90px;
+      border: 12px solid rgba(23,111,184,.25);
+    }
+
+    .photo-frame {
+      position: relative;
+      z-index: 1;
+      padding: 10px 10px 42px;
+      border: 3px solid var(--black);
+      border-radius: 20px;
+      background: #fffdf5;
+      box-shadow: 5px 6px 0 rgba(31,36,40,.16);
+      transform: rotate(-3deg);
+    }
+    .photo-frame img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4 / 2.75;
+      object-fit: cover;
+      border-radius: 12px;
+      filter: saturate(1.04) contrast(1.02);
+    }
+    .caption {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 10px;
+      font-family: "Patrick Hand", cursive;
+      font-size: 22px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .progress-card {
+      position: relative;
+      z-index: 2;
+      margin: -10px 4px 0;
+      padding: 22px;
+      border: 3px solid var(--black);
+      border-radius: 27px 22px 31px 24px;
+      background: #fff;
+      box-shadow: 6px 7px 0 rgba(31,36,40,.15);
+      transform: rotate(-1.1deg);
+    }
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .progress-top .label {
+      font-weight: 900;
+      color: var(--muted);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .progress-top .amount {
+      font-size: clamp(30px, 4vw, 42px);
+      line-height: 1;
+      font-weight: 900;
+      color: var(--green);
+    }
+    .progress-percent {
+      font-family: "Patrick Hand", cursive;
+      font-size: 34px;
+      color: var(--red);
+      white-space: nowrap;
+    }
+    .progress-track {
+      height: 22px;
+      padding: 3px;
+      border: 3px solid var(--black);
+      border-radius: 999px;
+      background: #fff4d8;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: repeating-linear-gradient(135deg, var(--red) 0 12px, var(--yellow) 12px 24px, var(--blue) 24px 36px);
+      transition: width .9s ease;
+    }
+    .progress-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .mini-stat {
+      padding: 11px;
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      background: var(--paper-2);
+    }
+    .mini-stat b { display: block; font-size: 16px; }
+    .mini-stat span { color: var(--muted); font-size: 12px; font-weight: 800; }
+
+    section { padding: 48px 0; }
+    .section-title {
+      margin: 0 0 18px;
+      font-family: "Patrick Hand", cursive;
+      font-size: clamp(42px, 5vw, 64px);
+      line-height: .9;
+      color: var(--black);
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+    .section-title .red { color: var(--red); }
+    .section-intro {
+      max-width: 760px;
+      margin: 0 0 24px;
+      color: #51483e;
+      font-size: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .card {
+      position: relative;
+      padding: 22px;
+      border: 3px solid var(--black);
+      border-radius: 28px 22px 31px 23px;
+      background: rgba(255,249,233,.82);
+      box-shadow: 7px 8px 0 rgba(31,36,40,.09);
+    }
+    .card:nth-child(2) { transform: rotate(.7deg); background: rgba(255,255,255,.76); }
+    .card:nth-child(3) { transform: rotate(-.8deg); }
+    .card .icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 12px;
+      border: 3px solid var(--black);
+      border-radius: 50%;
+      background: var(--yellow);
+      font-size: 24px;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 22px; line-height: 1.1; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .donation-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(320px, 1.05fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+    .donation-box {
+      padding: 24px;
+      border: 4px solid var(--black);
+      border-radius: 34px 26px 38px 28px;
+      background: #fffdf5;
+      box-shadow: 10px 12px 0 rgba(31,36,40,.10);
+    }
+    .ways {
+      display: grid;
+      gap: 14px;
+    }
+    .way {
+      padding: 16px;
+      border: 3px solid var(--black);
+      border-radius: 22px 18px 23px 17px;
+      background: var(--paper-2);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+    .way strong { display: block; font-size: 18px; }
+    .way code {
+      display: inline-block;
+      margin-top: 4px;
+      font-family: Nunito, sans-serif;
+      color: var(--red);
+      font-weight: 900;
+      font-size: 20px;
+      background: rgba(233,87,67,.08);
+      padding: 3px 8px;
+      border-radius: 10px;
+    }
+    .copy-btn {
+      min-width: 86px;
+      min-height: 38px;
+      padding: 0 12px;
+      border: 2px solid var(--black);
+      border-radius: 999px;
+      background: var(--yellow);
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 3px 4px 0 rgba(31,36,40,.16);
+    }
+    .copy-btn:active { transform: translateY(1px); box-shadow: 2px 2px 0 rgba(31,36,40,.16); }
+
+    .qr-card {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      min-height: 100%;
+      padding: 24px;
+      border: 4px solid var(--black);
+      border-radius: 28px 36px 26px 34px;
+      background:
+        linear-gradient(45deg, rgba(23,111,184,.07), transparent 40%),
+        #fff;
+      box-shadow: 10px 12px 0 rgba(31,36,40,.10);
+      transform: rotate(.55deg);
+    }
+    .qr-placeholder {
+      width: min(270px, 100%);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      border: 4px dashed var(--black);
+      border-radius: 30px;
+      background:
+        linear-gradient(90deg, rgba(23,111,184,.10) 50%, transparent 50%),
+        linear-gradient(rgba(233,87,67,.10) 50%, transparent 50%),
+        #fffdf5;
+      background-size: 26px 26px;
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .qr-img {
+      width: min(270px, 100%);
+      aspect-ratio: 1;
+      object-fit: contain;
+      border: 4px solid var(--black);
+      border-radius: 30px;
+      background: #fff;
+    }
+    .qr-card p { max-width: 390px; color: var(--muted); margin: 16px 0 0; }
+
+    .note {
+      margin-top: 20px;
+      padding: 18px 20px;
+      border: 3px solid var(--blue);
+      border-radius: 24px;
+      background: rgba(23,111,184,.08);
+      color: #344153;
+      font-weight: 700;
+    }
+
+    .share-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 26px;
+      border: 4px solid var(--black);
+      border-radius: 32px 26px 34px 28px;
+      background: var(--yellow);
+      box-shadow: 10px 12px 0 rgba(31,36,40,.11);
+    }
+    .share-box h2 { margin: 0 0 6px; font-size: 26px; }
+    .share-box p { margin: 0; color: #4c3f2c; font-weight: 700; }
+
+    .footer {
+      padding: 34px 0 54px;
+      color: var(--muted);
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .doodles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+    .doodle {
+      position: absolute;
+      opacity: .95;
+      filter: drop-shadow(2px 2px 0 rgba(31,36,40,.04));
+    }
+    .doodle svg { display: block; width: 100%; height: 100%; }
+    .bird-a { width: 132px; height: 94px; top: 22px; left: min(6vw, 72px); transform: rotate(-12deg); }
+    .bird-b { width: 122px; height: 90px; top: 54px; right: min(8vw, 92px); transform: rotate(15deg); }
+    .ribbon-a { width: 380px; height: 150px; top: 8px; left: 43%; transform: translateX(-50%) rotate(2deg); opacity: .9; }
+    .ribbon-b { width: 300px; height: 140px; bottom: 26px; right: -70px; transform: rotate(-18deg); opacity: .75; }
+    .star-a { width: 50px; height: 50px; top: 44%; left: 4%; transform: rotate(12deg); }
+    .star-b { width: 44px; height: 44px; bottom: 12%; left: 58%; transform: rotate(-10deg); }
+    .star-c { width: 46px; height: 46px; top: 42%; right: 4%; transform: rotate(8deg); }
+
+    .curve-hand {
+      position: relative;
+      display: inline-block;
+    }
+    .curve-hand::after {
+      content: "";
+      position: absolute;
+      left: -4px;
+      right: -4px;
+      bottom: 1px;
+      height: 14px;
+      background: var(--yellow);
+      z-index: -1;
+      opacity: .65;
+      border-radius: 50%;
+      transform: rotate(-1deg);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      z-index: 30;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      padding: 12px 16px;
+      border: 3px solid var(--black);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--black);
+      font-weight: 900;
+      box-shadow: 5px 6px 0 rgba(31,36,40,.18);
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 900px) {
+      .topbar { align-items: flex-start; border-radius: 24px; transform: none; }
+      .nav a:not(.pill) { display: none; }
+      .hero { padding-top: 52px; }
+      .hero-grid, .donation-grid, .share-box { grid-template-columns: 1fr; }
+      .poster-card { transform: none; }
+      .cards { grid-template-columns: 1fr; }
+      .card:nth-child(n) { transform: none; }
+      .progress-details { grid-template-columns: 1fr; }
+      .doodle { opacity: .42; }
+      .ribbon-a { width: 260px; left: 55%; }
+      .bird-a { width: 86px; left: -18px; top: 28px; }
+      .bird-b { width: 86px; right: -20px; top: 90px; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 24px, var(--max)); }
+      h1 { font-size: 62px; }
+      .lead { font-size: 17px; }
+      .way { grid-template-columns: 1fr; }
+      .copy-btn { justify-self: start; }
+      .topbar { width: min(100% - 20px, var(--max)); }
+      .brand span { max-width: 170px; line-height: 1.05; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar" aria-label="Navegación principal">
+    <div class="brand"><div class="brand-mark">D</div><span>Danna al CIMAT</span></div>
+    <nav class="nav">
+      <a href="#historia">La historia</a>
+      <a href="#aportar">Cómo aportar</a>
+      <a href="#compartir">Compartir</a>
+      <a class="pill" href="#aportar">Aportar ahora</a>
+    </nav>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="doodles" aria-hidden="true">
+        <div class="doodle bird-a">
+          <svg viewBox="0 0 160 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 57C42 27 70 22 97 54C121 51 140 58 151 77C120 73 96 76 76 90C54 79 35 67 15 57Z" fill="#F4BC37" stroke="#202124" stroke-width="6" stroke-linejoin="round"/>
+            <path d="M78 49C67 28 66 13 74 6C84 22 92 37 97 54" fill="#202124" stroke="#202124" stroke-width="5" stroke-linejoin="round"/>
+            <path d="M70 90C45 100 24 99 8 86C32 77 52 78 76 90" fill="#202124" stroke="#202124" stroke-width="5" stroke-linejoin="round"/>
+            <circle cx="106" cy="55" r="3" fill="#fff"/>
+            <path d="M118 54L138 46L122 64" fill="#176FB8" stroke="#202124" stroke-width="5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="doodle bird-b">
+          <svg viewBox="0 0 160 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 74C45 45 75 44 97 70C118 48 137 39 153 42C139 69 121 85 96 93C72 83 45 77 18 74Z" fill="#F4BC37" stroke="#202124" stroke-width="6" stroke-linejoin="round"/>
+            <path d="M95 70C105 37 121 18 143 7C143 44 128 69 96 93" fill="#BFE3EF" stroke="#202124" stroke-width="5" stroke-linejoin="round"/>
+            <path d="M62 65C42 54 29 42 20 28C53 29 77 43 97 70" fill="#202124" stroke="#202124" stroke-width="5" stroke-linejoin="round"/>
+            <circle cx="107" cy="65" r="3" fill="#fff"/>
+            <path d="M117 63L140 56L122 72" fill="#E95743" stroke="#202124" stroke-width="5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="doodle ribbon-a">
+          <svg viewBox="0 0 420 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 98C62 16 154 9 215 76C279 147 356 148 414 59" stroke="#E95743" stroke-width="10" stroke-linecap="round"/>
+            <path d="M7 122C73 54 153 43 209 96C274 157 345 156 410 84" stroke="#176FB8" stroke-width="8" stroke-linecap="round"/>
+            <path d="M19 147C87 98 152 84 204 119C270 164 332 164 395 111" stroke="#F4BC37" stroke-width="8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="doodle ribbon-b">
+          <svg viewBox="0 0 320 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 111C58 31 119 29 160 88C203 151 263 148 310 66" stroke="#E95743" stroke-width="9" stroke-linecap="round"/>
+            <path d="M11 132C67 69 118 65 157 105C202 152 254 150 303 91" stroke="#176FB8" stroke-width="7" stroke-linecap="round"/>
+            <path d="M26 151C75 107 119 103 154 125C201 154 246 152 292 116" stroke="#F4BC37" stroke-width="7" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="doodle star-a"><svg viewBox="0 0 64 64"><path d="M31 6l8 17 18 2-13 13 4 18-17-9-16 9 3-18L6 25l18-2 7-17z" fill="none" stroke="#176FB8" stroke-width="5" stroke-linejoin="round"/></svg></div>
+        <div class="doodle star-b"><svg viewBox="0 0 64 64"><path d="M31 6l8 17 18 2-13 13 4 18-17-9-16 9 3-18L6 25l18-2 7-17z" fill="none" stroke="#176FB8" stroke-width="5" stroke-linejoin="round"/></svg></div>
+        <div class="doodle star-c"><svg viewBox="0 0 64 64"><path d="M31 6l8 17 18 2-13 13 4 18-17-9-16 9 3-18L6 25l18-2 7-17z" fill="none" stroke="#176FB8" stroke-width="5" stroke-linejoin="round"/></svg></div>
+      </div>
+
+      <div class="wrap hero-grid">
+        <div>
+          <div class="hand-badge">Recolecta solidaria</div>
+          <h1>Ayudemos a <span class="black-script">Danna</span><br>a llegar al CIMAT</h1>
+          <p class="lead">
+            Danna Sánchez fue invitada a participar en la <strong>Escuela de Verano del CIMAT en Mérida, México</strong>. La escuela apoya el resto de sus gastos; esta recolecta busca cubrir únicamente sus <strong>vuelos: $1.400.000 COP</strong>.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#aportar">♥ Quiero aportar</a>
+            <a class="button button-secondary" href="https://escuelasdeverano.cimat.mx/Merida_escuelasdeverano" target="_blank" rel="noopener">Ver la escuela</a>
+          </div>
+        </div>
+
+        <aside class="poster-card" aria-label="Avance de la recolecta">
+          <div class="photo-frame">
+            <img src="assets/cimat-merida.png" alt="Foto de referencia de la sede de la escuela de verano CIMAT Mérida" />
+            <div class="caption">Mérida, México · Escuela de Verano CIMAT</div>
+          </div>
+          <div class="progress-card">
+            <div class="progress-top">
+              <div>
+                <div class="label">Vamos reuniendo</div>
+                <div class="amount" id="recaudado">$400.000</div>
+              </div>
+              <div class="progress-percent" id="porcentaje">29%</div>
+            </div>
+            <div class="progress-track" aria-label="Progreso de la recolecta">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-details">
+              <div class="mini-stat"><b id="meta">$1.400.000</b><span>Meta vuelos</span></div>
+              <div class="mini-stat"><b id="faltante">$1.000.000</b><span>Faltan</span></div>
+              <div class="mini-stat"><b>100%</b><span>Para despegar</span></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="historia">
+      <div class="wrap">
+        <h2 class="section-title">Una ayuda <span class="red">concreta</span>, una oportunidad enorme</h2>
+        <p class="section-intro">
+          Esta no es una recolecta abierta para todos los gastos del viaje. La escuela ya apoya lo demás; lo que falta es comprar los tiquetes. Cada aporte, pequeño o grande, ayuda a que Danna pueda aprovechar esta experiencia académica sin que el costo del vuelo sea la barrera.
+        </p>
+        <div class="cards">
+          <article class="card">
+            <div class="icon">✦</div>
+            <h3>¿Para qué es?</h3>
+            <p>Para cubrir los vuelos de Danna Sánchez a México y de regreso a Colombia.</p>
+          </article>
+          <article class="card">
+            <div class="icon">☀</div>
+            <h3>¿Cuál es la meta?</h3>
+            <p>Recolectar <strong>$1.400.000 COP</strong>, el valor estimado de los tiquetes.</p>
+          </article>
+          <article class="card">
+            <div class="icon">↗</div>
+            <h3>¿Por qué apoyar?</h3>
+            <p>Porque una comunidad puede abrir camino para que una estudiante participe en una escuela matemática internacional.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="aportar">
+      <div class="wrap donation-grid">
+        <div class="donation-box">
+          <h2 class="section-title">Cómo <span class="red">aportar</span></h2>
+          <p class="section-intro">
+            Puedes enviar tu aporte directamente a Danna. Para confirmar o enviar comprobante, escríbele al mismo número de WhatsApp.
+          </p>
+          <div class="ways">
+            <div class="way">
+              <div>
+                <strong>Nequi</strong>
+                <code id="nequiText">319 514 1271</code>
+              </div>
+              <button class="copy-btn" data-copy="3195141271">Copiar</button>
+            </div>
+            <div class="way">
+              <div>
+                <strong>Llave Bre-B</strong>
+                <code id="brebText">@3195141271</code>
+              </div>
+              <button class="copy-btn" data-copy="@3195141271">Copiar</button>
+            </div>
+            <div class="way">
+              <div>
+                <strong>WhatsApp de Danna</strong>
+                <code>319 514 1271</code>
+              </div>
+              <a class="button button-blue button-small" href="https://wa.me/573195141271?text=Hola%20Danna%2C%20quiero%20apoyar%20tu%20viaje%20al%20CIMAT." target="_blank" rel="noopener">Escribir</a>
+            </div>
+          </div>
+          <div class="note">
+            Responsable de la recolecta: <strong>Danna Sánchez</strong>. El dinero se usará para comprar los vuelos de ida y regreso a la Escuela de Verano CIMAT Mérida.
+          </div>
+        </div>
+
+        <aside class="qr-card" aria-label="Espacio para QR de pago">
+          <div class="qr-placeholder">
+            Pega aquí el QR real de Nequi, Bancolombia o Bre-B
+          </div>
+          <p>
+            Para añadir un QR, guarda la imagen como <strong>assets/qr.png</strong> y reemplaza este recuadro por una etiqueta de imagen. También puedes dejar solo el número y la llave.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="compartir">
+      <div class="wrap">
+        <div class="share-box">
+          <div>
+            <h2>Comparte esta página</h2>
+            <p>La forma más sencilla de ayudar, además de aportar, es mover la voz entre amigos, profes, compañeros y personas que quieran apoyar la formación matemática.</p>
+          </div>
+          <a class="button button-primary" href="https://wa.me/?text=Ayudemos%20a%20Danna%20S%C3%A1nchez%20a%20cubrir%20sus%20vuelos%20para%20la%20Escuela%20de%20Verano%20CIMAT%20en%20M%C3%A9xico.%20Meta%3A%20%241.400.000%20COP.%20Nequi%3A%203195141271%20%7C%20Bre-B%3A%20%403195141271" target="_blank" rel="noopener">Compartir por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      Hecho con cariño para acompañar el camino académico de Danna Sánchez · Recolecta para vuelos al CIMAT.
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">Copiado</div>
+
+  <script>
+    const CONFIG = {
+      metaCOP: 1400000,
+      recaudadoCOP: 400000,
+      nequi: "3195141271",
+      breb: "@3195141271",
+      responsable: "Danna Sánchez",
+      whatsapp: "573195141271"
+    };
+
+    const fmt = new Intl.NumberFormat("es-CO", {
+      style: "currency",
+      currency: "COP",
+      maximumFractionDigits: 0
+    });
+
+    const progress = Math.min(100, Math.round((CONFIG.recaudadoCOP / CONFIG.metaCOP) * 100));
+    const faltante = Math.max(0, CONFIG.metaCOP - CONFIG.recaudadoCOP);
+
+    document.getElementById("recaudado").textContent = fmt.format(CONFIG.recaudadoCOP);
+    document.getElementById("meta").textContent = fmt.format(CONFIG.metaCOP);
+    document.getElementById("faltante").textContent = fmt.format(faltante);
+    document.getElementById("porcentaje").textContent = progress + "%";
+    requestAnimationFrame(() => {
+      document.getElementById("progressFill").style.width = progress + "%";
+    });
+
+    const toast = document.getElementById("toast");
+    function showToast(text) {
+      toast.textContent = text;
+      toast.classList.add("show");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 1600);
+    }
+
+    document.querySelectorAll("[data-copy]").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const value = btn.getAttribute("data-copy");
+        try {
+          await navigator.clipboard.writeText(value);
+          showToast("Copiado: " + value);
+        } catch (err) {
+          showToast("No se pudo copiar automáticamente");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
